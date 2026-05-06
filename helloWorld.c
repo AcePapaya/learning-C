@@ -2,6 +2,12 @@
 #include <string.h>
 
 
+float addNum(float num1, float num2){
+    float ans =  num1 + num2;
+    return ans;
+}
+
+
 float truncFloat(float num){
     // char arr[20];
     // sprintf(arr, "%f", &num);
@@ -19,6 +25,22 @@ void printStr(char *msg, size_t lengthMsg){
     for (size_t i = 0; i < lengthMsg; i++){
         printf("%c", msg[i]);
     }
+}
+void prinStrArray(char *arr, size_t lengthArr){
+    for (size_t i = 0; i < lengthArr; i++){
+        printStr(arr[i], strlen(arr[i]));
+    }
+}
+
+int chooseOp(){
+    char *options[2][100] = {
+        "1. Add",
+        "2. Subtract"
+    };
+    char msg[] = "Please choose an operation using the numbers";
+    prinStrArray(options, 2);
+    int choice = getNum(msg, strlen(msg));
+    return choice;
 }
 
 
@@ -54,7 +76,19 @@ int main() {
     char msg2[] = "Please enter the second number:";
     num2 = getNum(msg2, strlen(msg2));
 
-    ans = num1 + num2;
+
+    do{
+    int choice = chooseOp();
+
+    switch (choice) {
+        case 1:
+            ans = addNum(num1, num2);
+            break;
+        case 2:
+
+            break;
+    }
+    } while (choice < 2);
 
     ans = truncFloat(ans);
 
