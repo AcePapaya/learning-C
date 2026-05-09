@@ -1,10 +1,15 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 
 
 float addNum(float num1, float num2){
     float ans =  num1 + num2;
     return ans;
+}
+
+float subtractNum(float num1, float num2){
+
 }
 
 
@@ -39,12 +44,12 @@ int chooseOp(){
     };
     char msg[] = "Please choose an operation using the numbers";
     prinStrArray(options, 2);
-    int choice = getNum(msg, strlen(msg));
+    int choice = getNum(msg, strlen(msg), 1);
     return choice;
 }
 
 
-double getNum(char *msg, size_t lengthMsg){
+double getNum(char *msg, size_t lengthMsg, bool forceInt){
 
     double num;
     char inp[100];
@@ -54,11 +59,20 @@ double getNum(char *msg, size_t lengthMsg){
 
     while (fgets(inp, sizeof(inp), stdin)) {
             // Try to read an integer from the input string
-        if (sscanf(inp, "%lf", &num) == 1) {
+        if (forceInt){
+            if (sscanf(inp, "%d", &num) == 1) {
             break; // Success: break out of the loop
-        } else {
+            } else {
             printf("Invalid input. Try again: "); // If not an integer, ask again
         }
+        }
+        
+        else {
+            if (sscanf(inp, "%lf", &num) == 1) {
+            break; // Success: break out of the loop
+            } else {
+            printf("Invalid input. Try again: "); // If not an integer, ask again
+        }}
     }
     return num;
 }
@@ -71,11 +85,13 @@ int main() {
 
 
     char msg1[] = "Please enter the first number:";
-    num1 = getNum(msg1, strlen(msg1));
+    num1 = getNum(msg1, strlen(msg1), 0);
 
     char msg2[] = "Please enter the second number:";
-    num2 = getNum(msg2, strlen(msg2));
+    num2 = getNum(msg2, strlen(msg2), 0);
 
+    
+    bool endLoop =  0;
 
     do{
     int choice = chooseOp();
@@ -83,12 +99,19 @@ int main() {
     switch (choice) {
         case 1:
             ans = addNum(num1, num2);
+            endLoop = 1; 
             break;
-        case 2:
 
+        case 2:
+            ans = subtractNum(num1, num2);
+            endLoop = 1; 
+            break;
+        default:
+            char msg[] = "Please enter a valid number";
+            printStr(msg, strlen(msg));
             break;
     }
-    } while (choice < 2);
+    } while (!endLoop);
 
     ans = truncFloat(ans);
 
