@@ -31,23 +31,6 @@ void printStr(char *msg, size_t lengthMsg){
         printf("%c", msg[i]);
     }
 }
-void prinStrArray(char *arr, size_t lengthArr){
-    for (size_t i = 0; i < lengthArr; i++){
-        printStr(arr[i], strlen(arr[i]));
-    }
-}
-
-int chooseOp(){
-    char *options[2][100] = {
-        "1. Add",
-        "2. Subtract"
-    };
-    char msg[] = "Please choose an operation using the numbers";
-    prinStrArray(options, 2);
-    int choice = getNum(msg, strlen(msg), 1);
-    return choice;
-}
-
 
 double getNum(char *msg, size_t lengthMsg, bool forceInt){
 
@@ -59,22 +42,39 @@ double getNum(char *msg, size_t lengthMsg, bool forceInt){
 
     while (fgets(inp, sizeof(inp), stdin)) {
             // Try to read an integer from the input string
-        if (forceInt){
-            if (sscanf(inp, "%d", &num) == 1) {
+             if (sscanf(inp, "%d", &num) == 1) {
             break; // Success: break out of the loop
             } else {
             printf("Invalid input. Try again: "); // If not an integer, ask again
         }
-        }
+        // if (forceInt){
+           
+        // }
         
-        else {
-            if (sscanf(inp, "%lf", &num) == 1) {
-            break; // Success: break out of the loop
-            } else {
-            printf("Invalid input. Try again: "); // If not an integer, ask again
-        }}
+        // else {
+        //     if (sscanf(inp, "%lf", &num) == 1) {
+        //     break; // Success: break out of the loop
+        //     } else {
+        //     printf("Invalid input. Try again: "); // If not an integer, ask again
+        // }}
     }
     return num;
+}
+
+int chooseOp(){
+    char msg[] = "Please choose an operation using the numbers\n";
+    printStr(msg, strlen(msg));
+    char *options[2] = {
+        "1. Add\n",
+        "2. Subtract\n"
+    };
+    int n = sizeof(options)/sizeof(options[0]);
+    for (int i = 0; i < n; i++){
+        printStr(options[i], strlen(options[i]));
+    }
+
+    int choice = getNum("", strlen(""), 1);
+    return choice;
 }
 
 int main() {
