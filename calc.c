@@ -12,9 +12,16 @@ float addNum(float num1, float num2){
 }
 
 float subtractNum(float num1, float num2){
-
+    return num1 - num2;
 }
 
+float multiplyNum(float num1, float num2){
+    return num1 * num2;
+}
+
+float divideNum(float num1, float num2){
+    return num1 / num2;
+}
 
 float truncFloat(float num){
     // char arr[20];
@@ -75,13 +82,16 @@ int getInt(char *msg, size_t lengthMsg){
 int chooseOp(){
     char msg[] = "Please choose an operation using the numbers\n";
     printStr(msg, strlen(msg));
-    char *options[2] = {
-        "1. Add\n",
-        "2. Subtract"
+    char *options[4] = {
+        "1. Add",
+        "2. Subtract",
+        "3. Multiply",
+        "4. Divide"
     };
     int n = sizeof(options)/sizeof(options[0]);
     for (int i = 0; i < n; i++){
         printStr(options[i], strlen(options[i]));
+        printf("\n");
     }
 
     int choice = getInt("", strlen(""));
@@ -115,12 +125,6 @@ int main() {
     double num1, num2;
     double ans;
 
-    // char test[] = "50+10";
-
-    // strToFormattedStruct(test, strlen(test));
-
-
-
     printf("Welcome to my C calculator!\n");
 
 
@@ -145,6 +149,14 @@ int main() {
 
         case 2:
             ans = subtractNum(num1, num2);
+            endLoop = 1; 
+            break;
+        case 3:
+            ans = multiplyNum(num1, num2);
+            endLoop = 1; 
+            break;
+        case 4:
+            ans = divideNum(num1, num2);
             endLoop = 1; 
             break;
         default:
