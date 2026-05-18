@@ -11,16 +11,10 @@ void printStr(char *msg, size_t lengthMsg){
 }
 
 
-struct nodeOp
+struct Node
 {
-    char op;
-    struct nodeNum *next;
-};
-
-struct nodeNum
-{
-    float data;
-    struct nodeOp *next;
+    void *data;
+    struct Node *next;
 };
 
 void removeChar(char *str, int index) {
@@ -35,23 +29,32 @@ void removeChar(char *str, int index) {
     str[j] = '\0'; // Null-terminate the modified string
 }
 
+
+
 int main(){
 
     char test[] = "h10+2";
+    void *ptr = &test;
+    float temp;
+    bool positive;
 
-    struct nodeNum * head = NULL;
+    struct Node *head = NULL;
 
     float sum = 0;
 
+    if (test[0] == '-'){
+            positive = 0;
+        }
     while(!isdigit(test[0])){
         removeChar(test, 0);
     }
-    // printStr(test, strlen(test));
+
 
     for(int i = 0; i < strlen(test); i++){
-        
-    }
+        // if (){
 
+        // }
+    }
 
     return 0;
 }

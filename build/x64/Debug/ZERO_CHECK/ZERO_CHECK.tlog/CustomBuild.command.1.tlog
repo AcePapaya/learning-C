@@ -1,0 +1,10 @@
+^C:\USERS\RAFIK\ONEDRIVE\DOCUMENTS\GITHUB\3.4 3.8 ALON KENT\LEARNING-C\BUILD\CMAKEFILES\F08DACF24C1D7F78940C218E27F3AF72\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SC:/Users/rafik/OneDrive/Documents/GitHub/3.4 3.8 Alon Kent/learning-C" "-BC:/Users/rafik/OneDrive/Documents/GitHub/3.4 3.8 Alon Kent/learning-C/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Users/rafik/OneDrive/Documents/GitHub/3.4 3.8 Alon Kent/learning-C/build/calc.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

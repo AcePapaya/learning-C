@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\rafik\OneDrive\Documents\GitHub\3.4 3.8 Alon Kent\learning-C\build\CMakeFiles\f08dacf24c1d7f78940c218e27f3af72\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{15249065-9C74-3292-A5EE-001E92DA712E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
